@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://khay6eoma7l1"]
+
+[ext_resource type="Texture2D" uid="uid://mnsgavg8kjak" path="res://images/chancha_de_lata.png" id="1_p3pxj"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p3pxj"]
+friction = 0.05
+
+[node name="Pieza" type="RigidBody2D" groups=["pieza"]]
+disable_mode = 1
+input_pickable = true
+physics_material_override = SubResource("PhysicsMaterial_p3pxj")
+gravity_scale = 0.0
+
+[node name="NodeExample" type="Sprite2D" parent="." groups=["Persist"]]
+texture = ExtResource("1_p3pxj")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(3, 3, 3, 125, 253, 125, 253, 3)

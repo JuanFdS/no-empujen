@@ -1,0 +1,146 @@
+[gd_scene load_steps=14 format=3 uid="uid://cik30de5gaaah"]
+
+[ext_resource type="Script" uid="uid://sjkxylub4h2h" path="res://scenes/niveles/nivel_1/nivel_1.gd" id="1_5lhp1"]
+[ext_resource type="Script" uid="uid://cen5x7unxhr52" path="res://scenes/niveles/reglas_del_juego.gd" id="2_x0ovj"]
+[ext_resource type="PackedScene" uid="uid://khay6eoma7l1" path="res://scenes/elementos_del_juego/pieza.tscn" id="3_x0ovj"]
+[ext_resource type="PackedScene" uid="uid://c7b2jnm38eylb" path="res://scenes/elementos_del_juego/chaboncin.tscn" id="4_43c6u"]
+[ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="4_cbbpc"]
+[ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="5_0emmd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ovj"]
+size = Vector2(128, 256)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x0ovj"]
+line_spacing = -10.0
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_lwbrt"]
+offsets = PackedFloat32Array(0.431755)
+colors = PackedColorArray(0.351563, 0.351563, 0.351563, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_43c6u"]
+gradient = SubResource("Gradient_lwbrt")
+width = 384
+height = 576
+
+[sub_resource type="Gradient" id="Gradient_43c6u"]
+offsets = PackedFloat32Array(0.626741)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ohwje"]
+gradient = SubResource("Gradient_43c6u")
+
+[sub_resource type="LabelSettings" id="LabelSettings_lwbrt"]
+
+[node name="IngameScene" type="Node2D"]
+script = ExtResource("1_5lhp1")
+
+[node name="ReglasDelJuego" type="Node2D" parent="."]
+script = ExtResource("2_x0ovj")
+
+[node name="Pieza" parent="ReglasDelJuego" instance=ExtResource("3_x0ovj")]
+position = Vector2(128, 448)
+lock_rotation = true
+
+[node name="Pieza2" parent="ReglasDelJuego" instance=ExtResource("4_43c6u")]
+position = Vector2(384, 448)
+
+[node name="Pieza3" parent="ReglasDelJuego" instance=ExtResource("4_43c6u")]
+position = Vector2(64, 448)
+
+[node name="Pieza4" parent="ReglasDelJuego" instance=ExtResource("4_43c6u")]
+position = Vector2(64, 320)
+
+[node name="Pieza6" parent="ReglasDelJuego" instance=ExtResource("4_43c6u")]
+position = Vector2(192, 320)
+
+[node name="Pieza7" parent="ReglasDelJuego" instance=ExtResource("4_43c6u")]
+position = Vector2(256, 320)
+
+[node name="Pieza8" parent="ReglasDelJuego" instance=ExtResource("4_43c6u")]
+position = Vector2(320, 320)
+
+[node name="Pieza9" parent="ReglasDelJuego" instance=ExtResource("4_43c6u")]
+position = Vector2(384, 320)
+
+[node name="Pieza5" parent="ReglasDelJuego" instance=ExtResource("4_43c6u")]
+position = Vector2(128, 320)
+
+[node name="Salida" type="Area2D" parent="ReglasDelJuego"]
+position = Vector2(64, 64)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReglasDelJuego/Salida"]
+position = Vector2(-64, 64)
+shape = SubResource("RectangleShape2D_x0ovj")
+
+[node name="ColorRect" type="ColorRect" parent="ReglasDelJuego/Salida"]
+offset_right = 64.0
+offset_bottom = 128.0
+color = Color(0, 1, 0, 0.596078)
+
+[node name="Label" type="Label" parent="ReglasDelJuego/Salida"]
+offset_left = 12.0
+offset_right = 52.0
+offset_bottom = 128.0
+text = "P
+u
+e
+r
+t
+a"
+label_settings = SubResource("LabelSettings_x0ovj")
+horizontal_alignment = 1
+
+[node name="Polygon2D" type="Polygon2D" parent="ReglasDelJuego/Salida"]
+position = Vector2(0, 15)
+scale = Vector2(0.75, 0.75)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(20, 59, 32, 59, 31, 65, 19, 66, 20, 74, 2, 62, 21, 50)
+
+[node name="Bondi" type="StaticBody2D" parent="ReglasDelJuego"]
+z_index = -1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ReglasDelJuego/Bondi"]
+position = Vector2(64, 0)
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 0, 62.5931, 0, -128, -512, -128, -512, 448, 0, 448, 0, 192, 0, 576, 384, 576, 384, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ReglasDelJuego/Bondi"]
+position = Vector2(64, 0)
+texture = SubResource("GradientTexture2D_43c6u")
+centered = false
+
+[node name="Sprite2D" type="Sprite2D" parent="ReglasDelJuego"]
+z_index = -2
+scale = Vector2(8, 10)
+texture = SubResource("GradientTexture2D_ohwje")
+centered = false
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="FadeOverlay" parent="UI" instance=ExtResource("4_cbbpc")]
+unique_name_in_owner = true
+visible = false
+
+[node name="PauseOverlay" parent="UI" instance=ExtResource("5_0emmd")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
+
+[node name="PanelContainer" type="PanelContainer" parent="UI"]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -64.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="UI/PanelContainer"]
+layout_mode = 2
+text = "¡Ayudá a la Chancha de Lata a
+bajarse del bondi!"
+label_settings = SubResource("LabelSettings_lwbrt")
+horizontal_alignment = 1
