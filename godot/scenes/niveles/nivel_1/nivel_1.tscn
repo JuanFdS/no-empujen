@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=18 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" uid="uid://sjkxylub4h2h" path="res://scenes/niveles/nivel_1/nivel_1.gd" id="1_5lhp1"]
 [ext_resource type="Script" uid="uid://cen5x7unxhr52" path="res://scenes/niveles/reglas_del_juego.gd" id="2_x0ovj"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="5_0emmd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ovj"]
-size = Vector2(128, 256)
+size = Vector2(128, 138)
 
 [sub_resource type="LabelSettings" id="LabelSettings_x0ovj"]
 line_spacing = -10.0
@@ -34,11 +34,150 @@ gradient = SubResource("Gradient_43c6u")
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwbrt"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_43c6u"]
+font_size = 50
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_lwbrt"]
+resource_name = "ganaste"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.28319]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Avanzar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.01, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Avanzar:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_43c6u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1e-05)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Avanzar:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Avanzar:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_43c6u"]
+_data = {
+&"RESET": SubResource("Animation_43c6u"),
+&"ganaste": SubResource("Animation_lwbrt")
+}
+
 [node name="IngameScene" type="Node2D"]
 script = ExtResource("1_5lhp1")
 
-[node name="ReglasDelJuego" type="Node2D" parent="."]
+[node name="ReglasDelJuego" type="Node2D" parent="." node_paths=PackedStringArray("pieza_objetivo")]
 script = ExtResource("2_x0ovj")
+pieza_objetivo = NodePath("Pieza")
 
 [node name="Pieza" parent="ReglasDelJuego" instance=ExtResource("3_x0ovj")]
 position = Vector2(128, 448)
@@ -69,10 +208,11 @@ position = Vector2(384, 320)
 position = Vector2(128, 320)
 
 [node name="Salida" type="Area2D" parent="ReglasDelJuego"]
+unique_name_in_owner = true
 position = Vector2(64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReglasDelJuego/Salida"]
-position = Vector2(-64, 64)
+position = Vector2(-109, 62)
 shape = SubResource("RectangleShape2D_x0ovj")
 
 [node name="ColorRect" type="ColorRect" parent="ReglasDelJuego/Salida"]
@@ -144,3 +284,38 @@ text = "¡Ayudá a la Chancha de Lata a
 bajarse del bondi!"
 label_settings = SubResource("LabelSettings_lwbrt")
 horizontal_alignment = 1
+
+[node name="Ganaste" type="Label" parent="UI"]
+visible = false
+offset_left = 112.0
+offset_top = 245.0
+offset_right = 394.0
+offset_bottom = 314.0
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(142, 38)
+theme_override_font_sizes/font_size = 50
+text = "¡¡¡Ganaste!!!"
+label_settings = SubResource("LabelSettings_43c6u")
+
+[node name="Avanzar" type="Button" parent="UI/Ganaste"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = -5.0
+offset_top = 75.0
+offset_right = 285.0
+offset_bottom = 152.0
+pivot_offset = Vector2(142, 38)
+theme_override_font_sizes/font_size = 20
+text = "Pronto
+más niveles
+(Se buscan:
+artista, sonidista,
+game designer,
+el que sea,
+el tuyo)"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Ganaste"]
+libraries = {
+&"": SubResource("AnimationLibrary_43c6u")
+}
