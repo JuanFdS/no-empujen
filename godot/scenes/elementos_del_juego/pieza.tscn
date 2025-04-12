@@ -1,5 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://khay6eoma7l1"]
+[gd_scene load_steps=4 format=3 uid="uid://khay6eoma7l1"]
 
+[ext_resource type="Script" uid="uid://d4h4njgmf3np6" path="res://scenes/elementos_del_juego/pieza.gd" id="1_gw3g4"]
 [ext_resource type="Texture2D" uid="uid://mnsgavg8kjak" path="res://images/chancha_de_lata.png" id="1_p3pxj"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_p3pxj"]
@@ -10,6 +11,7 @@ disable_mode = 1
 input_pickable = true
 physics_material_override = SubResource("PhysicsMaterial_p3pxj")
 gravity_scale = 0.0
+script = ExtResource("1_gw3g4")
 
 [node name="NodeExample" type="Sprite2D" parent="." groups=["Persist"]]
 texture = ExtResource("1_p3pxj")

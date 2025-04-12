@@ -1,7 +1,8 @@
-@tool
 extends RigidBody2D
 
-func _notification(what: int) -> void:
-	match what:
-		NOTIFICATION_TRANSFORM_CHANGED:
-			position = round(position / 64) * 64
+func esta_bloqueada():
+	return false
+
+func _process(delta: float) -> void:
+	if esta_bloqueada():
+		modulate = Color.GRAY

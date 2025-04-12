@@ -45,7 +45,7 @@ func dejar_de_arrastrar(pieza):
 	pieza_siendo_arrastrada = null
 
 func on_pieza_input_event(viewport: Node, event: InputEvent, shape_idx: int, pieza: RigidBody2D):
-	if resuelto:
+	if resuelto or pieza.esta_bloqueada():
 		return
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.is_pressed():
