@@ -6,6 +6,7 @@ var punto_de_ancla: Vector2 = Vector2.ZERO
 @onready var salida: Area2D = %Salida
 @export var pieza_objetivo: RigidBody2D
 var resuelto: bool = false
+@export_file("*.tscn") var next_scene: String
 
 func _ready() -> void:
 	%ParaQueSoloSalgaElObjetivo.add_collision_exception_with(pieza_objetivo)

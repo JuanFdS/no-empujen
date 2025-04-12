@@ -1,14 +1,26 @@
-[gd_scene load_steps=9 format=3 uid="uid://dv2y18ye8j7o0"]
+[gd_scene load_steps=14 format=3 uid="uid://dv2y18ye8j7o0"]
 
 [ext_resource type="Script" uid="uid://cvlpexsl56mwl" path="res://scenes/main_menu_scene.gd" id="1_1foie"]
 [ext_resource type="PackedScene" uid="uid://cik30de5gaaah" path="res://scenes/niveles/nivel_1/nivel_1.tscn" id="2_nl5i6"]
 [ext_resource type="PackedScene" uid="uid://g4qhvbvdm62w" path="res://scenes/game_settings_scene.tscn" id="3_dgs4d"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="3_kf1us"]
 [ext_resource type="PackedScene" uid="uid://b4blrdjthcxnn" path="res://ui/components/game_logo.tscn" id="4_fnufg"]
+[ext_resource type="Theme" uid="uid://d22mpqutkotsu" path="res://ui/theme.tres" id="4_wbyn4"]
+[ext_resource type="FontFile" uid="uid://c13o2njfxxph6" path="res://fonts/Pedagogique Medium.otf" id="5_8fdqi"]
 [ext_resource type="AudioStream" uid="uid://dlchk3c1baiy8" path="res://music/corgie-title.ogg" id="6_drnm6"]
+[ext_resource type="Texture2D" uid="uid://ci4y61kt0u266" path="res://images/bondi.png" id="8_ofrqx"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofrqx"]
+bg_color = Color(0, 0, 0, 0.392157)
 
 [sub_resource type="LabelSettings" id="LabelSettings_6ad1t"]
-font_size = 40
+font = ExtResource("5_8fdqi")
+font_size = 45
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pw2k5"]
+bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_2ikbh"]
 font_size = 15
@@ -21,28 +33,46 @@ settings_scene = ExtResource("3_dgs4d")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
+[node name="TextureRect" type="TextureRect" parent="UI"]
+offset_right = 512.0
+offset_bottom = 640.0
+texture = ExtResource("8_ofrqx")
+
 [node name="Label" type="Label" parent="UI"]
-offset_left = 69.0
-offset_top = 26.0
-offset_right = 469.0
-offset_bottom = 139.0
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 111.0
+grow_horizontal = 2
+theme = ExtResource("4_wbyn4")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ofrqx")
 text = "¡No Empujen!
 que hay una criatura"
 label_settings = SubResource("LabelSettings_6ad1t")
 horizontal_alignment = 1
 
 [node name="Credits" type="MarginContainer" parent="UI"]
-offset_left = 115.0
-offset_top = 569.0
-offset_right = 397.0
-offset_bottom = 601.0
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -107.0
+grow_horizontal = 2
+grow_vertical = 0
 size_flags_horizontal = 8
 size_flags_vertical = 8
 theme_override_constants/margin_top = 10
 
-[node name="Label" type="Label" parent="UI/Credits"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Credits"]
 layout_mode = 2
-text = "por Juan Manuel Fernandes dos Santos"
+
+[node name="Label" type="Label" parent="UI/Credits/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_pw2k5")
+text = "Arte:
+Constanza Morend
+
+Programación, diseño del juego:
+Juan Manuel Fernandes dos Santos"
 label_settings = SubResource("LabelSettings_2ikbh")
 horizontal_alignment = 1
 

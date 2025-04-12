@@ -8,9 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="5_n1nif"]
 [ext_resource type="PackedScene" uid="uid://djsgf4jjlgems" path="res://scenes/elementos_del_juego/durmiendo.tscn" id="6_427pr"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="6_pih6d"]
-[ext_resource type="PackedScene" uid="uid://c3vjbxxbjntc8" path="res://scenes/elementos_del_juego/luz_mala.tscn" id="7_njhn1"]
 [ext_resource type="Texture2D" uid="uid://ci4y61kt0u266" path="res://images/bondi.png" id="8_p76sv"]
 [ext_resource type="Script" uid="uid://b3ioi343egb1s" path="res://scenes/elementos_del_juego/avanzar.gd" id="10_427pr"]
+[ext_resource type="FontFile" uid="uid://c13o2njfxxph6" path="res://fonts/Pedagogique Medium.otf" id="10_p76sv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ovj"]
 size = Vector2(192, 256)
@@ -32,6 +32,7 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_43c6u")
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwbrt"]
+font = ExtResource("10_p76sv")
 
 [sub_resource type="LabelSettings" id="LabelSettings_43c6u"]
 font_size = 50
@@ -175,8 +176,10 @@ _data = {
 script = ExtResource("1_jcd6k")
 
 [node name="ReglasDelJuego" type="Node2D" parent="." node_paths=PackedStringArray("pieza_objetivo")]
+unique_name_in_owner = true
 script = ExtResource("2_q2xq4")
 pieza_objetivo = NodePath("Nahuelito")
+next_scene = "uid://n2pjti0hak5x"
 
 [node name="Nahuelito" parent="ReglasDelJuego" instance=ExtResource("3_q8d7r")]
 position = Vector2(128, 320)
@@ -208,9 +211,6 @@ position = Vector2(64, 192)
 
 [node name="Durmiendo" parent="ReglasDelJuego" instance=ExtResource("6_427pr")]
 position = Vector2(256, 192)
-
-[node name="LuzMala" parent="ReglasDelJuego" instance=ExtResource("7_njhn1")]
-position = Vector2(192, 192)
 
 [node name="Salida" type="Area2D" parent="ReglasDelJuego"]
 unique_name_in_owner = true
@@ -317,7 +317,6 @@ pivot_offset = Vector2(142, 38)
 theme_override_font_sizes/font_size = 20
 text = "Siguiente"
 script = ExtResource("10_427pr")
-next_scene = "uid://n2pjti0hak5x"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Ganaste"]
 libraries = {
