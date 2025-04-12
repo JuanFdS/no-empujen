@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://n2pjti0hak5x"]
+[gd_scene load_steps=19 format=3 uid="uid://n2pjti0hak5x"]
 
 [ext_resource type="Script" uid="uid://sjkxylub4h2h" path="res://scenes/niveles/nivel_escena.gd" id="1_v3g5k"]
 [ext_resource type="Script" uid="uid://cen5x7unxhr52" path="res://scenes/niveles/reglas_del_juego.gd" id="2_t3t3r"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="5_5ogg6"]
+[ext_resource type="Texture2D" uid="uid://ci4y61kt0u266" path="res://images/bondi.png" id="5_gi3bs"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="6_ox7mc"]
 [ext_resource type="PackedScene" uid="uid://c3vjbxxbjntc8" path="res://scenes/elementos_del_juego/luz_mala.tscn" id="6_vgcbb"]
 [ext_resource type="Script" uid="uid://b3ioi343egb1s" path="res://scenes/elementos_del_juego/avanzar.gd" id="7_416qk"]
@@ -16,15 +17,6 @@ line_spacing = -10.0
 font_size = 20
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_lwbrt"]
-offsets = PackedFloat32Array(0.431755)
-colors = PackedColorArray(0.351563, 0.351563, 0.351563, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_43c6u"]
-gradient = SubResource("Gradient_lwbrt")
-width = 384
-height = 576
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vgcbb"]
 normal = Vector2(1, 0)
@@ -213,13 +205,13 @@ position = Vector2(-109, 62)
 shape = SubResource("RectangleShape2D_x0ovj")
 
 [node name="ColorRect" type="ColorRect" parent="ReglasDelJuego/Salida"]
-offset_right = 64.0
+offset_left = -64.0
 offset_bottom = 128.0
 color = Color(0, 1, 0, 0.596078)
 
 [node name="Label" type="Label" parent="ReglasDelJuego/Salida"]
-offset_left = 12.0
-offset_right = 52.0
+offset_left = -52.0
+offset_right = -12.0
 offset_bottom = 128.0
 text = "P
 u
@@ -230,12 +222,6 @@ a"
 label_settings = SubResource("LabelSettings_x0ovj")
 horizontal_alignment = 1
 
-[node name="Polygon2D" type="Polygon2D" parent="ReglasDelJuego/Salida"]
-position = Vector2(0, 15)
-scale = Vector2(0.75, 0.75)
-color = Color(0, 0, 0, 1)
-polygon = PackedVector2Array(20, 59, 32, 59, 31, 65, 19, 66, 20, 74, 2, 62, 21, 50)
-
 [node name="Bondi" type="StaticBody2D" parent="ReglasDelJuego"]
 z_index = -1
 
@@ -245,8 +231,7 @@ build_mode = 1
 polygon = PackedVector2Array(0, 0, 0, 62.5931, 0, -128, -512, -128, -512, 448, 0, 448, 0, 192, 0, 576, 384, 576, 384, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ReglasDelJuego/Bondi"]
-position = Vector2(64, 0)
-texture = SubResource("GradientTexture2D_43c6u")
+texture = ExtResource("5_gi3bs")
 centered = false
 
 [node name="ParaQueSoloSalgaElObjetivo" type="StaticBody2D" parent="ReglasDelJuego/Bondi"]
