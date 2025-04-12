@@ -1,19 +1,22 @@
-[gd_scene load_steps=20 format=3 uid="uid://n2pjti0hak5x"]
+[gd_scene load_steps=23 format=3 uid="uid://b2fnsjlqfk32w"]
 
-[ext_resource type="Script" uid="uid://sjkxylub4h2h" path="res://scenes/niveles/nivel_escena.gd" id="1_v3g5k"]
-[ext_resource type="Script" uid="uid://cen5x7unxhr52" path="res://scenes/niveles/reglas_del_juego.gd" id="2_t3t3r"]
-[ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="5_5ogg6"]
-[ext_resource type="Texture2D" uid="uid://ci4y61kt0u266" path="res://images/bondi.png" id="5_gi3bs"]
-[ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="6_ox7mc"]
-[ext_resource type="PackedScene" uid="uid://c3vjbxxbjntc8" path="res://scenes/elementos_del_juego/luz_mala.tscn" id="6_vgcbb"]
-[ext_resource type="Script" uid="uid://b3ioi343egb1s" path="res://scenes/elementos_del_juego/avanzar.gd" id="7_416qk"]
-[ext_resource type="PackedScene" uid="uid://djsgf4jjlgems" path="res://scenes/elementos_del_juego/durmiendo.tscn" id="7_gi3bs"]
-[ext_resource type="FontFile" uid="uid://c13o2njfxxph6" path="res://fonts/Pedagogique Medium.otf" id="8_5eknu"]
+[ext_resource type="Script" uid="uid://sjkxylub4h2h" path="res://scenes/niveles/nivel_escena.gd" id="1_tko6u"]
+[ext_resource type="Script" uid="uid://cen5x7unxhr52" path="res://scenes/niveles/reglas_del_juego.gd" id="2_ap8hl"]
+[ext_resource type="PackedScene" uid="uid://c3vjbxxbjntc8" path="res://scenes/elementos_del_juego/luz_mala.tscn" id="3_74p82"]
+[ext_resource type="PackedScene" uid="uid://djsgf4jjlgems" path="res://scenes/elementos_del_juego/durmiendo.tscn" id="4_q8af2"]
+[ext_resource type="PackedScene" uid="uid://dxqm3hew5iehv" path="res://scenes/elementos_del_juego/nahuelito.tscn" id="5_ap8hl"]
+[ext_resource type="Texture2D" uid="uid://ci4y61kt0u266" path="res://images/bondi.png" id="5_fumqk"]
+[ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="6_de5ud"]
+[ext_resource type="PackedScene" uid="uid://c7b2jnm38eylb" path="res://scenes/elementos_del_juego/chaboncin.tscn" id="7_74p82"]
+[ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="7_g3ixb"]
+[ext_resource type="FontFile" uid="uid://c13o2njfxxph6" path="res://fonts/Pedagogique Medium.otf" id="8_gbmtf"]
+[ext_resource type="PackedScene" uid="uid://cttas6esdl5dv" path="res://scenes/elementos_del_juego/con_criatura.tscn" id="8_q8af2"]
+[ext_resource type="Script" uid="uid://b3ioi343egb1s" path="res://scenes/elementos_del_juego/avanzar.gd" id="9_5qpp4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ovj"]
-size = Vector2(128, 138)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q8af2"]
+size = Vector2(192, 256)
 
-[sub_resource type="LabelSettings" id="LabelSettings_x0ovj"]
+[sub_resource type="LabelSettings" id="LabelSettings_fumqk"]
 line_spacing = -10.0
 font_size = 20
 outline_size = 5
@@ -30,7 +33,7 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_43c6u")
 
 [sub_resource type="LabelSettings" id="LabelSettings_lwbrt"]
-font = ExtResource("8_5eknu")
+font = ExtResource("8_gbmtf")
 
 [sub_resource type="LabelSettings" id="LabelSettings_43c6u"]
 font_size = 50
@@ -171,52 +174,56 @@ _data = {
 }
 
 [node name="IngameScene" type="Node2D"]
-script = ExtResource("1_v3g5k")
+script = ExtResource("1_tko6u")
 
 [node name="ReglasDelJuego" type="Node2D" parent="." node_paths=PackedStringArray("pieza_objetivo")]
 unique_name_in_owner = true
-script = ExtResource("2_t3t3r")
-pieza_objetivo = NodePath("LuzMala")
-next_scene = "uid://b2fnsjlqfk32w"
+script = ExtResource("2_ap8hl")
+pieza_objetivo = NodePath("Nahuelito")
 
-[node name="LuzMala" parent="ReglasDelJuego" instance=ExtResource("6_vgcbb")]
-position = Vector2(384, 512)
+[node name="LuzMala" parent="ReglasDelJuego" instance=ExtResource("3_74p82")]
+position = Vector2(320, 0)
 
-[node name="Durmiendo" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
-position = Vector2(384, 320)
-
-[node name="Durmiendo2" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
+[node name="Durmiendo" parent="ReglasDelJuego" instance=ExtResource("4_q8af2")]
 position = Vector2(320, 320)
+rotation = -1.5708
 
-[node name="Durmiendo3" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
-position = Vector2(256, 320)
-
-[node name="Durmiendo4" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
+[node name="Nahuelito" parent="ReglasDelJuego" instance=ExtResource("5_ap8hl")]
 position = Vector2(192, 320)
 
-[node name="Durmiendo5" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
-position = Vector2(128, 320)
+[node name="Durmiendo2" parent="ReglasDelJuego" instance=ExtResource("4_q8af2")]
+position = Vector2(384, 320)
 
-[node name="Durmiendo6" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
-position = Vector2(64, 320)
+[node name="Durmiendo3" parent="ReglasDelJuego" instance=ExtResource("4_q8af2")]
+position = Vector2(320, 320)
+
+[node name="Durmiendo4" parent="ReglasDelJuego" instance=ExtResource("4_q8af2")]
+position = Vector2(192, 448)
+
+[node name="Durmiendo5" parent="ReglasDelJuego" instance=ExtResource("4_q8af2")]
+position = Vector2(128, 448)
+
+[node name="Durmiendo6" parent="ReglasDelJuego" instance=ExtResource("4_q8af2")]
+position = Vector2(64, 448)
 
 [node name="Salida" type="Area2D" parent="ReglasDelJuego"]
 unique_name_in_owner = true
 position = Vector2(64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReglasDelJuego/Salida"]
-position = Vector2(-109, 62)
-shape = SubResource("RectangleShape2D_x0ovj")
+position = Vector2(-224, 64)
+shape = SubResource("RectangleShape2D_q8af2")
 
 [node name="ColorRect" type="ColorRect" parent="ReglasDelJuego/Salida"]
 offset_left = -64.0
-offset_bottom = 128.0
+offset_top = -64.0
+offset_bottom = 192.0
 mouse_filter = 2
 color = Color(0, 1, 0, 0.596078)
 
 [node name="Label" type="Label" parent="ReglasDelJuego/Salida"]
-offset_left = -52.0
-offset_right = -12.0
+offset_left = -54.0
+offset_right = -14.0
 offset_bottom = 128.0
 text = "P
 u
@@ -224,7 +231,7 @@ e
 r
 t
 a"
-label_settings = SubResource("LabelSettings_x0ovj")
+label_settings = SubResource("LabelSettings_fumqk")
 horizontal_alignment = 1
 
 [node name="Bondi" type="StaticBody2D" parent="ReglasDelJuego"]
@@ -233,10 +240,10 @@ z_index = -1
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ReglasDelJuego/Bondi"]
 position = Vector2(64, 0)
 build_mode = 1
-polygon = PackedVector2Array(0, 0, 0, 62.5931, 0, -128, -512, -128, -512, 448, 0, 448, 0, 192, 0, 576, 384, 576, 384, 0)
+polygon = PackedVector2Array(0, 0, 0, 0, 0, -128, -512, -128, -512, 448, 0, 448, 0, 256, 0, 576, 384, 576, 384, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ReglasDelJuego/Bondi"]
-texture = ExtResource("5_gi3bs")
+texture = ExtResource("5_fumqk")
 centered = false
 
 [node name="ParaQueSoloSalgaElObjetivo" type="StaticBody2D" parent="ReglasDelJuego/Bondi"]
@@ -253,13 +260,23 @@ scale = Vector2(8, 10)
 texture = SubResource("GradientTexture2D_ohwje")
 centered = false
 
+[node name="Pieza2" parent="ReglasDelJuego" instance=ExtResource("7_74p82")]
+position = Vector2(384, 64)
+
+[node name="ConCriatura" parent="ReglasDelJuego" instance=ExtResource("8_q8af2")]
+position = Vector2(256, 0)
+
+[node name="ConCriatura2" parent="ReglasDelJuego" instance=ExtResource("8_q8af2")]
+position = Vector2(192, 320)
+rotation = 1.5708
+
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="FadeOverlay" parent="UI" instance=ExtResource("5_5ogg6")]
+[node name="FadeOverlay" parent="UI" instance=ExtResource("6_de5ud")]
 unique_name_in_owner = true
 visible = false
 
-[node name="PauseOverlay" parent="UI" instance=ExtResource("6_ox7mc")]
+[node name="PauseOverlay" parent="UI" instance=ExtResource("7_g3ixb")]
 unique_name_in_owner = true
 process_mode = 2
 visible = false
@@ -275,8 +292,8 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="UI/PanelContainer"]
 layout_mode = 2
-text = "La luz mala está apurada, está yendo a hacer
-una publicidad de una app de apuestas..."
+text = "Nahuelito tiene que llegar a rendir su último final
+... ¡ayudalo a recibirse!"
 label_settings = SubResource("LabelSettings_lwbrt")
 horizontal_alignment = 1
 
@@ -302,8 +319,9 @@ offset_right = 285.0
 offset_bottom = 152.0
 pivot_offset = Vector2(142, 38)
 theme_override_font_sizes/font_size = 20
-text = "Siguiente"
-script = ExtResource("7_416qk")
+text = "Eso fue todo por ahora,
+¡gracias por jugar!"
+script = ExtResource("9_5qpp4")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Ganaste"]
 libraries = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dv2y18ye8j7o0"]
+[gd_scene load_steps=15 format=3 uid="uid://dv2y18ye8j7o0"]
 
 [ext_resource type="Script" uid="uid://cvlpexsl56mwl" path="res://scenes/main_menu_scene.gd" id="1_1foie"]
 [ext_resource type="PackedScene" uid="uid://cik30de5gaaah" path="res://scenes/niveles/nivel_1/nivel_1.tscn" id="2_nl5i6"]
@@ -9,6 +9,7 @@
 [ext_resource type="FontFile" uid="uid://c13o2njfxxph6" path="res://fonts/Pedagogique Medium.otf" id="5_8fdqi"]
 [ext_resource type="AudioStream" uid="uid://dlchk3c1baiy8" path="res://music/corgie-title.ogg" id="6_drnm6"]
 [ext_resource type="Texture2D" uid="uid://ci4y61kt0u266" path="res://images/bondi.png" id="8_ofrqx"]
+[ext_resource type="Texture2D" uid="uid://dolvbgm8ykeen" path="res://images/logo_completo.png" id="9_pw2k5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ofrqx"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -39,14 +40,15 @@ offset_bottom = 640.0
 texture = ExtResource("8_ofrqx")
 
 [node name="Label" type="Label" parent="UI"]
+visible = false
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 111.0
 grow_horizontal = 2
 theme = ExtResource("4_wbyn4")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ofrqx")
-text = "¡No Empujen!
-que hay una criatura"
+text = "
+"
 label_settings = SubResource("LabelSettings_6ad1t")
 horizontal_alignment = 1
 
@@ -122,6 +124,11 @@ text = "leave_game"
 [node name="FadeOverlay" parent="UI" instance=ExtResource("3_kf1us")]
 unique_name_in_owner = true
 visible = false
+
+[node name="LogoCompleto" type="Sprite2D" parent="UI"]
+position = Vector2(255, 53)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_pw2k5")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_drnm6")
