@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cik30de5gaaah"]
+[gd_scene load_steps=19 format=3 uid="uid://cik30de5gaaah"]
 
 [ext_resource type="Script" uid="uid://sjkxylub4h2h" path="res://scenes/niveles/nivel_escena.gd" id="1_5lhp1"]
 [ext_resource type="Script" uid="uid://cen5x7unxhr52" path="res://scenes/niveles/reglas_del_juego.gd" id="2_x0ovj"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c7b2jnm38eylb" path="res://scenes/elementos_del_juego/chaboncin.tscn" id="4_43c6u"]
 [ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="4_cbbpc"]
 [ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="5_0emmd"]
+[ext_resource type="Script" uid="uid://b3ioi343egb1s" path="res://scenes/elementos_del_juego/avanzar.gd" id="7_43c6u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ovj"]
 size = Vector2(128, 138)
@@ -307,13 +308,9 @@ offset_right = 285.0
 offset_bottom = 152.0
 pivot_offset = Vector2(142, 38)
 theme_override_font_sizes/font_size = 20
-text = "Pronto
-más niveles
-(Se buscan:
-artista, sonidista,
-game designer,
-el que sea,
-el tuyo)"
+text = "Al próximo nivel"
+script = ExtResource("7_43c6u")
+next_scene = "uid://q02vogg87adn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Ganaste"]
 libraries = {
