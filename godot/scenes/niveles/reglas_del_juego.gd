@@ -29,7 +29,7 @@ func on_pieza_mouse_exited(pieza):
 	pieza.modulate = Color.WHITE
 
 func empezar_a_arrastrar(pieza: RigidBody2D):
-	punto_de_ancla = pieza.to_local(get_global_mouse_position())
+	punto_de_ancla = get_global_mouse_position() - pieza.global_position
 	pieza.freeze = false
 	pieza_siendo_arrastrada = pieza
 	pieza.modulate = Color.MEDIUM_AQUAMARINE
