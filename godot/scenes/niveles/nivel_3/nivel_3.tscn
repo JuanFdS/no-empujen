@@ -1,18 +1,15 @@
-[gd_scene load_steps=23 format=3 uid="uid://q02vogg87adn"]
+[gd_scene load_steps=20 format=3 uid="uid://n2pjti0hak5x"]
 
-[ext_resource type="Script" uid="uid://sjkxylub4h2h" path="res://scenes/niveles/nivel_escena.gd" id="1_jcd6k"]
-[ext_resource type="Script" uid="uid://cen5x7unxhr52" path="res://scenes/niveles/reglas_del_juego.gd" id="2_q2xq4"]
-[ext_resource type="PackedScene" uid="uid://dxqm3hew5iehv" path="res://scenes/elementos_del_juego/nahuelito.tscn" id="3_q8d7r"]
-[ext_resource type="PackedScene" uid="uid://c7b2jnm38eylb" path="res://scenes/elementos_del_juego/chaboncin.tscn" id="4_8wsin"]
-[ext_resource type="PackedScene" uid="uid://cttas6esdl5dv" path="res://scenes/elementos_del_juego/con_criatura.tscn" id="5_5m4hy"]
-[ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="5_n1nif"]
-[ext_resource type="PackedScene" uid="uid://djsgf4jjlgems" path="res://scenes/elementos_del_juego/durmiendo.tscn" id="6_427pr"]
-[ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="6_pih6d"]
-[ext_resource type="PackedScene" uid="uid://c3vjbxxbjntc8" path="res://scenes/elementos_del_juego/luz_mala.tscn" id="7_njhn1"]
-[ext_resource type="Script" uid="uid://b3ioi343egb1s" path="res://scenes/elementos_del_juego/avanzar.gd" id="10_427pr"]
+[ext_resource type="Script" uid="uid://sjkxylub4h2h" path="res://scenes/niveles/nivel_escena.gd" id="1_v3g5k"]
+[ext_resource type="Script" uid="uid://cen5x7unxhr52" path="res://scenes/niveles/reglas_del_juego.gd" id="2_t3t3r"]
+[ext_resource type="PackedScene" uid="uid://bkk87o2ooo6at" path="res://ui/overlays/fade_overlay.tscn" id="5_5ogg6"]
+[ext_resource type="PackedScene" uid="uid://jyv4g54adkmo" path="res://ui/overlays/pause_overlay.tscn" id="6_ox7mc"]
+[ext_resource type="PackedScene" uid="uid://c3vjbxxbjntc8" path="res://scenes/elementos_del_juego/luz_mala.tscn" id="6_vgcbb"]
+[ext_resource type="Script" uid="uid://b3ioi343egb1s" path="res://scenes/elementos_del_juego/avanzar.gd" id="7_416qk"]
+[ext_resource type="PackedScene" uid="uid://djsgf4jjlgems" path="res://scenes/elementos_del_juego/durmiendo.tscn" id="7_gi3bs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x0ovj"]
-size = Vector2(192, 256)
+size = Vector2(128, 138)
 
 [sub_resource type="LabelSettings" id="LabelSettings_x0ovj"]
 line_spacing = -10.0
@@ -29,7 +26,7 @@ gradient = SubResource("Gradient_lwbrt")
 width = 384
 height = 576
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_427pr"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_vgcbb"]
 normal = Vector2(1, 0)
 
 [sub_resource type="Gradient" id="Gradient_43c6u"]
@@ -180,59 +177,44 @@ _data = {
 }
 
 [node name="IngameScene" type="Node2D"]
-script = ExtResource("1_jcd6k")
+script = ExtResource("1_v3g5k")
 
 [node name="ReglasDelJuego" type="Node2D" parent="." node_paths=PackedStringArray("pieza_objetivo")]
-script = ExtResource("2_q2xq4")
-pieza_objetivo = NodePath("Nahuelito")
+script = ExtResource("2_t3t3r")
+pieza_objetivo = NodePath("LuzMala")
 
-[node name="Nahuelito" parent="ReglasDelJuego" instance=ExtResource("3_q8d7r")]
-position = Vector2(128, 320)
+[node name="LuzMala" parent="ReglasDelJuego" instance=ExtResource("6_vgcbb")]
+position = Vector2(384, 512)
 
-[node name="Pieza2" parent="ReglasDelJuego" instance=ExtResource("4_8wsin")]
-position = Vector2(384, 448)
-
-[node name="Pieza3" parent="ReglasDelJuego" instance=ExtResource("4_8wsin")]
-position = Vector2(64, 448)
-
-[node name="Pieza4" parent="ReglasDelJuego" instance=ExtResource("4_8wsin")]
-position = Vector2(64, 320)
-
-[node name="Pieza6" parent="ReglasDelJuego" instance=ExtResource("4_8wsin")]
+[node name="Durmiendo" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
 position = Vector2(384, 320)
 
-[node name="Pieza7" parent="ReglasDelJuego" instance=ExtResource("4_8wsin")]
-position = Vector2(256, 320)
-
-[node name="Pieza8" parent="ReglasDelJuego" instance=ExtResource("4_8wsin")]
+[node name="Durmiendo2" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
 position = Vector2(320, 320)
 
-[node name="Pieza9" parent="ReglasDelJuego" instance=ExtResource("4_8wsin")]
-position = Vector2(448, 256)
-rotation = 1.5708
+[node name="Durmiendo3" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
+position = Vector2(256, 320)
 
-[node name="ConCriatura" parent="ReglasDelJuego" instance=ExtResource("5_5m4hy")]
-position = Vector2(64, 192)
+[node name="Durmiendo4" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
+position = Vector2(192, 320)
 
-[node name="Durmiendo" parent="ReglasDelJuego" instance=ExtResource("6_427pr")]
-position = Vector2(256, 192)
+[node name="Durmiendo5" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
+position = Vector2(128, 320)
 
-[node name="LuzMala" parent="ReglasDelJuego" instance=ExtResource("7_njhn1")]
-position = Vector2(192, 192)
+[node name="Durmiendo6" parent="ReglasDelJuego" instance=ExtResource("7_gi3bs")]
+position = Vector2(64, 320)
 
 [node name="Salida" type="Area2D" parent="ReglasDelJuego"]
 unique_name_in_owner = true
 position = Vector2(64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReglasDelJuego/Salida"]
-position = Vector2(-224, 64)
+position = Vector2(-109, 62)
 shape = SubResource("RectangleShape2D_x0ovj")
 
 [node name="ColorRect" type="ColorRect" parent="ReglasDelJuego/Salida"]
-offset_top = -64.0
 offset_right = 64.0
-offset_bottom = 192.0
-mouse_filter = 2
+offset_bottom = 128.0
 color = Color(0, 1, 0, 0.596078)
 
 [node name="Label" type="Label" parent="ReglasDelJuego/Salida"]
@@ -248,13 +230,19 @@ a"
 label_settings = SubResource("LabelSettings_x0ovj")
 horizontal_alignment = 1
 
+[node name="Polygon2D" type="Polygon2D" parent="ReglasDelJuego/Salida"]
+position = Vector2(0, 15)
+scale = Vector2(0.75, 0.75)
+color = Color(0, 0, 0, 1)
+polygon = PackedVector2Array(20, 59, 32, 59, 31, 65, 19, 66, 20, 74, 2, 62, 21, 50)
+
 [node name="Bondi" type="StaticBody2D" parent="ReglasDelJuego"]
 z_index = -1
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ReglasDelJuego/Bondi"]
 position = Vector2(64, 0)
 build_mode = 1
-polygon = PackedVector2Array(0, 0, 0, 0, 0, -128, -512, -128, -512, 448, 0, 448, 0, 256, 0, 576, 384, 576, 384, 0)
+polygon = PackedVector2Array(0, 0, 0, 62.5931, 0, -128, -512, -128, -512, 448, 0, 448, 0, 192, 0, 576, 384, 576, 384, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="ReglasDelJuego/Bondi"]
 position = Vector2(64, 0)
@@ -267,7 +255,7 @@ position = Vector2(61, 119)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReglasDelJuego/Bondi/ParaQueSoloSalgaElObjetivo"]
 position = Vector2(-2, 16)
-shape = SubResource("WorldBoundaryShape2D_427pr")
+shape = SubResource("WorldBoundaryShape2D_vgcbb")
 
 [node name="Sprite2D" type="Sprite2D" parent="ReglasDelJuego"]
 z_index = -2
@@ -277,11 +265,11 @@ centered = false
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="FadeOverlay" parent="UI" instance=ExtResource("5_n1nif")]
+[node name="FadeOverlay" parent="UI" instance=ExtResource("5_5ogg6")]
 unique_name_in_owner = true
 visible = false
 
-[node name="PauseOverlay" parent="UI" instance=ExtResource("6_pih6d")]
+[node name="PauseOverlay" parent="UI" instance=ExtResource("6_ox7mc")]
 unique_name_in_owner = true
 process_mode = 2
 visible = false
@@ -297,8 +285,8 @@ grow_vertical = 0
 
 [node name="Label" type="Label" parent="UI/PanelContainer"]
 layout_mode = 2
-text = "¡Ayudá al Nahuelito a
-bajarse en la facu!"
+text = "La luz mala está apurada, está yendo a hacer
+una publicidad de una app de apuestas..."
 label_settings = SubResource("LabelSettings_lwbrt")
 horizontal_alignment = 1
 
@@ -324,9 +312,15 @@ offset_right = 285.0
 offset_bottom = 152.0
 pivot_offset = Vector2(142, 38)
 theme_override_font_sizes/font_size = 20
-text = "Siguiente"
-script = ExtResource("10_427pr")
-next_scene = "uid://n2pjti0hak5x"
+text = "Pronto
+más niveles
+(Se buscan:
+artista, sonidista,
+game designer,
+el que sea,
+el tuyo)"
+script = ExtResource("7_416qk")
+next_scene = "uid://q02vogg87adn"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Ganaste"]
 libraries = {

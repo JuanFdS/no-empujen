@@ -8,6 +8,7 @@ var punto_de_ancla: Vector2 = Vector2.ZERO
 var resuelto: bool = false
 
 func _ready() -> void:
+	%ParaQueSoloSalgaElObjetivo.add_collision_exception_with(pieza_objetivo)
 	salida.body_entered.connect(func(body):
 		if body == pieza_objetivo:
 			ganaste()
